@@ -7,4 +7,9 @@ class UsersController < ApplicationController
     def create 
 
     end
+
+    def show
+        #get current user
+        
+    end
 end
