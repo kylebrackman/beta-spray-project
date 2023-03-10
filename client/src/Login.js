@@ -1,12 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from './context/user';
-// import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
     const {login} = useContext(UserContext)
+    const navigate = useNavigate()
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -18,11 +19,13 @@ function Login() {
                 password: password
             })
         }) 
-        .then(res => res.json()
-        .then(user => {
-            login(user)
+        .then((r) => {
+            if (r.ok){
+                r.json().then((user) => login(user))
+            } else {
+                r.json().then((err) => setError(err.errors))
+            }
         })
-        )
     }
 
     return (
