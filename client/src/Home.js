@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from './context/user';
 
 function Home() {
-    return (
-        <p>HOME PAGE</p>
-    )
+    const { user } = useContext(UserContext)
+
+    if (!user || user.error) {
+        return (
+            <h3>Please Login or Signup</h3>
+        )
+    } else {
+        return (
+            <p>Hello!</p>
+        )
+    }
 }
 
 export default Home

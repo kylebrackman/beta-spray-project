@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
     def index
         render json: User.all
     end
@@ -9,7 +10,11 @@ class UsersController < ApplicationController
     end
 
     def show
-        #get current user
-        binding.pry
+        user = User.find_by(id: session[:user_id])
+        if user
+            render json: user 
+        else 
+            render json: { error: "Not Authorized"}, status: :unauthorized
+        end
     end
 end
