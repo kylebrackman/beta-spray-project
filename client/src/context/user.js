@@ -15,15 +15,15 @@ function UserProvider({ children }) {
     }, [])
 
     function login() {
-
+        setUser(user)
     }
 
     function logout() {
-
+        setUser(null)
     }
 
-    function signup() {
-
+    function signup(user) {
+        setUser(user)
     }
 
     return (

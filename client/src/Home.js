@@ -10,7 +10,8 @@ function Home() {
         )
     } else {
         return (
-            <p>Hello!</p>
+            <div>
+            </div>
         )
     }
 }
