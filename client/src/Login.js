@@ -1,15 +1,14 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from './context/user';
-import { useNavigate } from 'react-router-dom'
-
+//
 function Login() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [error, setError] = useState("")
+    // const [error, setError] = useState("")
     const {login} = useContext(UserContext)
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
-    function handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault()
         fetch('/login', {
             method: 'POST',
@@ -19,13 +18,11 @@ function Login() {
                 password: password
             })
         }) 
-        .then((r) => {
-            if (r.ok){
-                r.json().then((user) => login(user))
-            } else {
-                r.json().then((err) => setError(err.errors))
-            }
+        .then(res => res.json())
+        .then((user) => {
+            login(user)
         })
+        // navigate('/')
     }
 
     return (
@@ -45,9 +42,10 @@ function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 /> <br />
+                <input type="submit"/>
             </form>
             <ul>
-                <h3>{error}</h3>
+                {/* <h3>{error}</h3> */}
             </ul>
         </>
     )
