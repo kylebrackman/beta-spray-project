@@ -32,11 +32,11 @@ function UserProvider({ children }) {
         })
     }
 
-    const addUserClimb = (climb) => {
+    const addUserClimb = (userClimb) => {
         fetch('/climbs', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(climb)
+            body: JSON.stringify(userClimb)
         })
         .then(res => res.json())
         .then(data => {
@@ -60,7 +60,7 @@ function UserProvider({ children }) {
     }
 
     return (
-        <UserContext.Provider value={{ user, login, logout, signup, loggedIn, userClimbs }}>
+        <UserContext.Provider value={{ user, login, logout, signup, loggedIn, userClimbs, addUserClimb }}>
             {children}
         </UserContext.Provider>
     );

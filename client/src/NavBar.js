@@ -24,6 +24,9 @@ const NavBar = () => {
             <div>
                 <h3>Hello {user.username} </h3>
                 <button onClick={logoutUser}>Logout</button>
+                <NavLink to='/myclimbs'>
+                    <button>My Climbs</button>
+                </NavLink>
             </div>
         )
     } else {
