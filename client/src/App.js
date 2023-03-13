@@ -5,7 +5,7 @@ import NavBar from './NavBar'
 import Home from './Home';
 import Login from './Login'
 import Signup from './Signup'
-
+import UserClimbs from './UserClimbs'
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
           <Route exact path = "/" element={<Home/>} />
           <Route exact path = "/signup" element={<Signup/>} />
           <Route exact path = "/login" element={<Login/>} />
+          <Route exact path = "/climbs" element={<UserClimbs/>} />
         </Routes>
       </UserProvider>
     </div>

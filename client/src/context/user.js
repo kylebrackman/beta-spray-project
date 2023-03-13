@@ -6,15 +6,43 @@ function UserProvider({ children }) {
 
     const [user, setUser] = useState({})
     const [loggedIn, setLoggedIn] = useState(false)
+    const [userClimbs, setUserClimbs] = useState([])
 
+    // should i consider putting all my fetch requests here? including my login / logout?
     useEffect(() => {
         fetch('/me')
             .then(res => res.json())
             .then(data => {
                 setUser(data)
-                data.error ? setLoggedIn(false) : setLoggedIn(true)
+                if (data.error) {
+                    setLoggedIn(false)
+                } else {
+                    setLoggedIn(true)
+                    fetchUserClimbs()
+                }
             })
     }, [])
+
+    const fetchUserClimbs = () => {
+        fetch('/climbs')
+        .then(res => res.json())
+        .then(data => {
+            console.log(data) 
+            setUserClimbs(data)
+        })
+    }
+
+    const addUserClimb = (climb) => {
+        fetch('/climbs', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(climb)
+        })
+        .then(res => res.json())
+        .then(data => {
+            setUserClimbs([...userClimbs, data])
+        })
+    }
 
     const login = (user) => {
         setUser(user)
@@ -32,7 +60,7 @@ function UserProvider({ children }) {
     }
 
     return (
-        <UserContext.Provider value={{ user, login, logout, signup, loggedIn }}>
+        <UserContext.Provider value={{ user, login, logout, signup, loggedIn, userClimbs }}>
             {children}
         </UserContext.Provider>
     );

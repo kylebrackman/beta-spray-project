@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   # resources :climb_infos
-  # resources :climbs
+  resources :climbs
   # resources :users
   #for security, should i not have resources on users?
 
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show'
+  # get '/climbs', to: 'climbs#index'
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
