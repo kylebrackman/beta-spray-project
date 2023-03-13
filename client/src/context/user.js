@@ -18,19 +18,19 @@ function UserProvider({ children }) {
                     setLoggedIn(false)
                 } else {
                     setLoggedIn(true)
-                    fetchUserClimbs()
+                    // fetchUserClimbs()
                 }
             })
     }, [])
 
-    const fetchUserClimbs = () => {
-        fetch('/climbs')
-        .then(res => res.json())
-        .then(data => {
-            console.log(data) 
-            setUserClimbs(data)
-        })
-    }
+    // const fetchUserClimbs = () => {
+    //     fetch('/climbs')
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         console.log(data) 
+    //         setUserClimbs(data)
+    //     })
+    // }
 
     const addUserClimb = (userClimb) => {
         fetch('/climbs', {

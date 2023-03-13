@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     has_secure_password
-    validates :username, :password, :password_confirmation, presence: true
+    validates :username, presence: true
     has_many :climb_infos
     has_many :climbs, through: :climb_infos
 end
