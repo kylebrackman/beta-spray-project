@@ -1,0 +1,2 @@
+class AddGradeToClimbInfosController < ApplicationController
+end

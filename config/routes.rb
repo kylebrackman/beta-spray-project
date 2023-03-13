@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :add_grade_to_climb_infos
   # resources :climb_infos
   resources :climbs
   # resources :users
