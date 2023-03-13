@@ -4,7 +4,7 @@ import { UserContext } from './context/user';
 function Home() {
     const { user, loggedIn } = useContext(UserContext)
 
-    if (loggedIn) {
+    if (loggedIn && user) {
         return (
             <h3>{user.username}'s Home Page</h3>
         )

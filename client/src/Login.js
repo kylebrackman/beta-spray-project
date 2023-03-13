@@ -1,30 +1,37 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from './context/user';
-//
-function Login() {
+import { useNavigate } from 'react-router-dom'
+
+
+const Login = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     // const [error, setError] = useState("")
-    const {login} = useContext(UserContext)
-    // const navigate = useNavigate()
-
+    const navigate = useNavigate()
+    const { login } = useContext(UserContext)
     const handleSubmit = (e) => {
         e.preventDefault()
         fetch('/login', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 username: username,
                 password: password
             })
-        }) 
-        .then(res => res.json())
-        .then((user) => {
-            login(user)
         })
-        // navigate('/')
+            .then(res => res.json())
+            .then((user) => {
+                if (!user.error) {
+                    login(user)
+                    navigate('/')
+                } else {
+                    setUsername("")
+                    setPassword("")
+                    // const errorLi = user.error.map(e => <li>{e}</li>)
+                    // setError(errorLi)
+                }
+            })
     }
-
     return (
         <>
             <form onSubmit={handleSubmit}>
@@ -42,7 +49,7 @@ function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 /> <br />
-                <input type="submit"/>
+                <input type="submit" />
             </form>
             <ul>
                 {/* <h3>{error}</h3> */}
@@ -50,5 +57,7 @@ function Login() {
         </>
     )
 }
+
+
 
 export default Login

@@ -18,7 +18,8 @@ const NavBar = () => {
             })
     }
 
-    if (loggedIn) {
+    // had to add the && user for this to work...?
+    if (loggedIn && user) {
         return (
             <div>
                 <h3>Hello {user.username} </h3>
@@ -34,6 +35,7 @@ const NavBar = () => {
                 <NavLink to='/signup'>
                     <button>Signup</button>
                 </NavLink>
+                <hr />
             </div>
         )
     }
