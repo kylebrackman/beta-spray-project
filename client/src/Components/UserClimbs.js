@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 // import { Route, useParams } from 'react-router-dom'
-import { UserContext } from './context/user';
+import { UserContext } from '../context/user';
 
 const UserClimbs = () => {
     const { loggedIn, userClimbs } = useContext(UserContext)
