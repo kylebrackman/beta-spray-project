@@ -1,11 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { UserContext } from './context/user';
+import { UserContext } from '../context/user';
 
 
-const ClimbSubmissionForm = () => {
+const ClimbSubmissionForm = ( { addClimbFlag }) => {
     const [climbName, setClimbName] = useState("")
     const [climbLocation, setClimbLocation] = useState("")
-    const [climbGrade, setClimbGrade] = useState("")
     const { addUserClimb } = useContext(UserContext)
 
     const handleSubmit = (e) => {
@@ -13,8 +12,8 @@ const ClimbSubmissionForm = () => {
         addUserClimb({
             climb_name: climbName,
             climb_location: climbLocation,
-            climb_grade: climbGrade
         })
+        addClimbFlag()
     }
 
     return (
@@ -25,13 +24,6 @@ const ClimbSubmissionForm = () => {
                 id="climbName"
                 value={climbName}
                 onChange={(e) => setClimbName(e.target.value)}
-            /> <br />
-            <label> Climb Grade: </label>
-            <input
-                type="text"
-                id="climbGrade"
-                value={climbGrade}
-                onChange={(e) => setClimbGrade(e.target.value)}
             /> <br />
             <label> Climb Location: </label>
             <input

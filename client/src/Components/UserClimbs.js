@@ -1,11 +1,16 @@
 import React, { useState, useContext } from 'react';
 // import { Route, useParams } from 'react-router-dom'
 import { UserContext } from '../context/user';
+import ClimbSubmissionForm from './ClimbSubmissionForm';
 
 const UserClimbs = () => {
     const { loggedIn, userClimbs } = useContext(UserContext)
-    // const [formFlag, setFormFlag] = useState(false)
+    const [formFlag, setFormFlag] = useState(false)
     // const params = useParams();
+
+    const addClimbFlag = () => {
+        setFormFlag(false)
+    }
 
 
     if (loggedIn) {
@@ -14,6 +19,7 @@ const UserClimbs = () => {
                 <h2>{c.climb_name}</h2>
                 <li>{c.climb_location}</li>
                 {/* <li>{c.climb_infos}</li> */}
+                <br />
             </div>
         )
         return (
@@ -21,6 +27,11 @@ const UserClimbs = () => {
                 <h3>Your Climbs!</h3>
                 <br />
                 {userClimbsList}
+                {formFlag ? 
+                    <ClimbSubmissionForm addClimbFlag={addClimbFlag} /> 
+                    :
+                    <button onClick={()=> setFormFlag(true)}> Add Climb! </button>
+                }
             </div>
         )
     } else

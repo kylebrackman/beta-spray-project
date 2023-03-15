@@ -22,11 +22,15 @@ const NavBar = () => {
     if (loggedIn && user) {
         return (
             <div>
-                <h3>Hello {user.username} </h3>
-                <button onClick={logoutUser}>Logout</button>
+                <NavLink to='/home'>
+                    <button> Home Page </button>
+                </NavLink>
                 <NavLink to='/myclimbs'>
                     <button>My Climbs</button>
                 </NavLink>
+                <button onClick={logoutUser}>Logout</button>
+                <br />
+                <h3>Hello {user.username} </h3>
             </div>
         )
     } else {
