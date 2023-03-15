@@ -1,41 +1,42 @@
 class ClimbsController < ApplicationController
-    before_action :authorize
+  before_action :authorize
 
-    def index
-    # add in if/else here, based off of routing 
-        climbs = Climb.all
-        render json: climbs
+  def index
+    # add in if/else here, based off of routing
+    user_climbs = current_user.climbs
+    render json: user_climbs, include: :climb_infos
+    #how to include climb infos? above is not working
+  end
+
+  def create
+    climb = current_user.climbs.create(climb_params)
+    if command.valid?
+      render json: climb, status: :created
+    else
+      render json: { errors: climb.errors.full_messages }, status: :unprocessable_entity
     end
+  end
 
-    def create 
-        climb = current_user.climbs.create(climb_params)
-        if command.valid?
-            render json: climb, status: :created 
-        else
-            render json: { errors: climb.errors.full_messages }, status: :unprocessable_entity
-        end
+  def show
+    climb = current_user.climbs.find_by(id: params[:id])
+    if climb
+      render json: climb
+    else
+      render json: { errors: "Not found" }, status: :unauthorized
     end
+  end
 
-    def show 
-        climb = current_user.climbs.find_by(id: params[:id])
-        if climb
-            render json: climb
-        else
-            render json: { errors: "Not found" }, status: :unauthorized
-        end  
-    end
+  private
 
-    private 
+  def current_user
+    User.find_by(id: session[:user_id])
+  end
 
-    def current_user
-        User.find_by(id: session[:user_id])
-    end
+  def climb_params
+    params.permit(:climb_name, :climb_location, :climb_grade)
+  end
 
-    def climb_params
-        params.permit(:climb_name, :climb_location, :climb_grade)
-    end
-
-    def authorize 
-        return render json: {error: "Not authorized"}, status: :unauthorized unless session.include? :user_id
-    end
+  def authorize
+    return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
+  end
 end

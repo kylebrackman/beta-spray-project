@@ -1,20 +1,19 @@
 import React, { useState, useContext } from 'react';
-import { Route, useParams } from 'react-router-dom'
+// import { Route, useParams } from 'react-router-dom'
 import { UserContext } from './context/user';
 
 const UserClimbs = () => {
-    const { user, loggedIn } = useContext(UserContext)
-    const [formFlag, setFormFlag] = useState(false)
-    const params = useParams();
-    const userClimbs = user.climbs
-    console.log(userClimbs)
+    const { loggedIn, userClimbs } = useContext(UserContext)
+    // const [formFlag, setFormFlag] = useState(false)
+    // const params = useParams();
+
 
     if (loggedIn) {
         const userClimbsList = userClimbs.map(c =>
             <div>
                 <h2>{c.climb_name}</h2>
                 <li>{c.climb_location}</li>
-                <li>{c.climb_infos}</li>
+                {/* <li>{c.climb_infos}</li> */}
             </div>
         )
         return (
