@@ -10,15 +10,12 @@ const UserClimbs = () => {
     console.log(userClimbs)
 
     if (loggedIn) {
-        const userClimbsList = userClimbs.map(c =>  <li>{c.climb_name}</li>
-            // <div>
-            //     <li>{c.climb_name}</li>
-                
-            //     <li>{c.climb_grade}</li>
-            //     <br />
-            //     <li>{c.climb_location}</li>
-            // </div>
-
+        const userClimbsList = userClimbs.map(c =>
+            <div>
+                <h2>{c.climb_name}</h2>
+                <li>{c.climb_location}</li>
+                <li>{c.climb_infos}</li>
+            </div>
         )
         return (
             <div>
@@ -26,11 +23,11 @@ const UserClimbs = () => {
                 <br />
                 {userClimbsList}
             </div>
-        ) 
-    } else 
-    return (
-        <h3>Not Authorized - Please Signup or Login </h3>
-    )
+        )
+    } else
+        return (
+            <h3>Not Authorized - Please Signup or Login </h3>
+        )
 
 }
 

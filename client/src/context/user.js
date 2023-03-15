@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 const UserContext = React.createContext();
 
 function UserProvider({ children }) {
 
+
     const [user, setUser] = useState({})
     const [loggedIn, setLoggedIn] = useState(false)
     const [userClimbs, setUserClimbs] = useState([])
+    const navigate = useNavigate()
 
     // should i consider putting all my fetch requests here? including my login / logout?
     useEffect(() => {
@@ -18,7 +20,7 @@ function UserProvider({ children }) {
                     setLoggedIn(false)
                 } else {
                     setLoggedIn(true)
-                    // fetchUserClimbs()
+                    setUserClimbs(data.climbs)
                 }
             })
     }, [])
@@ -31,7 +33,7 @@ function UserProvider({ children }) {
     //         setUserClimbs(data)
     //     })
     // }
-
+ 
     const addUserClimb = (userClimb) => {
         fetch('/climbs', {
             method: 'POST',
@@ -51,7 +53,8 @@ function UserProvider({ children }) {
 
     const logout = () => {
         setUser({})
-        setLoggedIn(false)
+        setLoggedIn(false)    
+        navigate('/')
     }
 
     const signup = (user) => {
