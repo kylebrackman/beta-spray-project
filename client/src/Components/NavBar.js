@@ -28,6 +28,9 @@ const NavBar = () => {
                 <NavLink to='/myclimbs'>
                     <button>My Climbs</button>
                 </NavLink>
+                <NavLink to='/submitclimb'>
+                    <button> Submit New Climb </button>
+                </NavLink>
                 <button onClick={logoutUser}>Logout</button>
                 <br />
                 <h3>Hello {user.username} </h3>

@@ -15,7 +15,7 @@ const UserClimbs = () => {
 
     if (loggedIn) {
         const userClimbsList = userClimbs.map(c =>
-            <div>
+            <div key={c.id}>
                 <h2>{c.climb_name}</h2>
                 <li>{c.climb_location}</li>
                 {/* <li>{c.climb_infos}</li> */}
@@ -27,11 +27,11 @@ const UserClimbs = () => {
                 <h3>Your Climbs!</h3>
                 <br />
                 {userClimbsList}
-                {formFlag ? 
+                {/* {formFlag ? 
                     <ClimbSubmissionForm addClimbFlag={addClimbFlag} /> 
                     :
                     <button onClick={()=> setFormFlag(true)}> Add Climb! </button>
-                }
+                } */}
             </div>
         )
     } else

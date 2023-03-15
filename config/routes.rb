@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  # resources :climb_infos
+  resources :climb_infos
   resources :climbs
   # resources :users
   #for security, should i not have resources on users?
@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # custom routes
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  
+
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show'
   # get '/climbs', to: 'climbs#index'

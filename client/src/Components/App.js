@@ -6,6 +6,7 @@ import Home from './Home';
 import Login from './Login'
 import Signup from './Signup'
 import UserClimbs from './UserClimbs'
+import ClimbSubmissionForm from './ClimbSubmissionForm';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
           <Route exact path = "/signup" element={<Signup/>} />
           <Route exact path = "/login" element={<Login/>} />
           <Route exact path = "/myclimbs" element={<UserClimbs/>} />
+          <Route exact path = "/submitclimb" element={<ClimbSubmissionForm/>} />
+          {/* <Route exact path = "/allclimbs" element={} /> */}
         </Routes>
       </UserProvider>
     </div>

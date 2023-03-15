@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { UserContext } from '../context/user';
 
 
-const ClimbSubmissionForm = ( { addClimbFlag }) => {
+const ClimbSubmissionForm = ({ addClimbFlag }) => {
     const [climbName, setClimbName] = useState("")
     const [climbLocation, setClimbLocation] = useState("")
     const { addUserClimb } = useContext(UserContext)
