@@ -6,6 +6,7 @@ import AllClimbsCard from './AllClimbsCard';
 
 const AllClimbs = () => {
     const { allClimbsList } = useContext(UserContext)
+    console.log(allClimbsList)
 
     return (
         allClimbsList.map(climb => {

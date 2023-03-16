@@ -8,7 +8,7 @@ class ClimbsController < ApplicationController
   end
 
   def create
-    climb = current_user.climbs.create(climb_params)
+    climb = Climb.create(climb_params)
     if climb.valid?
       render json: climb, status: :created
     else
@@ -35,7 +35,7 @@ class ClimbsController < ApplicationController
     params.permit(:climb_name, :climb_location, :climb_grade)
   end
 
-  def authorize
-    return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
-  end
+  # def authorize
+  #   return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
+  # end
 end
