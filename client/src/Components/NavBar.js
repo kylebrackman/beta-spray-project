@@ -14,7 +14,7 @@ const NavBar = () => {
         })
             .then(() => {
                 logout()
-                navigate('/')
+                navigate('/home')
             })
     }
 
@@ -22,6 +22,7 @@ const NavBar = () => {
     if (loggedIn && user) {
         return (
             <div>
+                <h1>Beta Spray</h1>
                 <NavLink to='/home'>
                     <button> Home Page </button>
                 </NavLink>

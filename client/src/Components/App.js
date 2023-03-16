@@ -14,7 +14,7 @@ function App() {
       <UserProvider>
         <NavBar />
         <Routes>
-          <Route exact path = "/" element={<Home/>} />
+          <Route exact path = "/home" element={<Home/>} />
           <Route exact path = "/signup" element={<Signup/>} />
           <Route exact path = "/login" element={<Login/>} />
           <Route exact path = "/myclimbs" element={<UserClimbs/>} />
