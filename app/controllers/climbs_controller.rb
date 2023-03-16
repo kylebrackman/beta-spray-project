@@ -3,14 +3,13 @@ class ClimbsController < ApplicationController
 
   def index
     # add in if/else here, based off of routing
-    user_climbs = current_user.climbs
-    render json: user_climbs
+    render json: Climb.all
     #how to include climb infos? above is not working
   end
 
   def create
     climb = current_user.climbs.create(climb_params)
-    if command.valid?
+    if climb.valid?
       render json: climb, status: :created
     else
       render json: { errors: climb.errors.full_messages }, status: :unprocessable_entity

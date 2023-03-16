@@ -5,10 +5,13 @@ const UserContext = React.createContext();
 function UserProvider({ children }) {
 
 
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({
+        climbs: []
+    })
     const [loggedIn, setLoggedIn] = useState(false)
     const [userClimbs, setUserClimbs] = useState([])
     const navigate = useNavigate()
+
 
     // should i consider putting all my fetch requests here? including my login / logout?
     useEffect(() => {
@@ -20,17 +23,20 @@ function UserProvider({ children }) {
                     setLoggedIn(false)
                 } else {
                     setLoggedIn(true)
-                    fetchUserClimbs() 
                 }
             })
     }, [])
 
-    const fetchUserClimbs = () => {
+    // const fetchUserClimbs = () => {
+    //     fetch('/climbs')
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         setUserClimbs(data)
+    //     })
+    // }
+
+    const allClimbsList = () => {
         fetch('/climbs')
-        .then(res => res.json())
-        .then(data => {
-            setUserClimbs(data)
-        })
     }
  
     const addUserClimb = (userClimb) => {
@@ -51,7 +57,9 @@ function UserProvider({ children }) {
     }
 
     const logout = () => {
-        setUser({})
+        setUser({
+            climbs: []
+        })
         setLoggedIn(false)    
         navigate('/')
     }

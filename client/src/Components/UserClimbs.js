@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { UserContext } from '../context/user';
 
 const UserClimbs = () => {
-    const { loggedIn, userClimbs } = useContext(UserContext)
+    const { loggedIn, user } = useContext(UserContext)
     // // removed because i moved submission form into it's own page
     // // const [formFlag, setFormFlag] = useState(false)
     // // const params = useParams();
@@ -13,7 +13,7 @@ const UserClimbs = () => {
 
 
     if (loggedIn) {
-        const userClimbsList = userClimbs.map(c =>
+        const userClimbsList = user.climbs.map(c =>
             <div key={c.id}>
                 <h2>{c.climb_name}</h2>
                 <li>{c.climb_location}</li>
