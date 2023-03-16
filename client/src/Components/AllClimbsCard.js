@@ -5,7 +5,7 @@ const AllClimbsCard = ( { climbName, climbLocation }) => {
     return (
         <div className="row">
             <div className="block">
-                <img />
+                <img alt='climb'/>
                     <div>
                         <h2>{climbName}</h2>
                         <p></p>
