@@ -6,10 +6,10 @@ function UserProvider({ children }) {
 
 
     const [user, setUser] = useState({
-        climbs: []
+        climb_infos: []
     })
     const [loggedIn, setLoggedIn] = useState(false)
-    const [userClimbs, setUserClimbs] = useState([])
+    // const [userClimbs, setUserClimbs] = useState([])
     const [allClimbsList, setAllClimbsList] = useState([])
     const navigate = useNavigate()
 
@@ -31,22 +31,22 @@ function UserProvider({ children }) {
 
     const fetchAllClimbs = () => {
         fetch('/climbs')
-        .then(res => res.json())
-        .then(data => {
-            setAllClimbsList(data)
-        })
+            .then(res => res.json())
+            .then(data => {
+                setAllClimbsList(data)
+            })
     }
- 
-    const addUserClimb = (userClimb) => {
+    const addNewClimb = (newClimb) => {
         fetch('/climbs', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(userClimb)
+            body: JSON.stringify(newClimb)
         })
-        .then(res => res.json())
-        .then(data => {
-            setUserClimbs([...userClimbs, data])
-        })
+            .then(res => res.json())
+            .then(data => {
+                setAllClimbsList([...allClimbsList, data]
+                )
+            })
     }
 
     const login = (user) => {
@@ -56,9 +56,9 @@ function UserProvider({ children }) {
 
     const logout = () => {
         setUser({
-            climbs: []
+            climb_infos: []
         })
-        setLoggedIn(false)    
+        setLoggedIn(false)
         navigate('/')
     }
 
@@ -69,15 +69,14 @@ function UserProvider({ children }) {
 
     return (
         <UserContext.Provider
-        value={{
-            user,
-            login,
-            logout,
-            signup,
-            loggedIn,
-            userClimbs,
-            addUserClimb,
-            allClimbsList
+            value={{
+                user,
+                login,
+                logout,
+                signup,
+                loggedIn,
+                addNewClimb,
+                allClimbsList
             }}>
             {children}
         </UserContext.Provider>

@@ -1,4 +1,4 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :climbs
+  attributes :id, :username, :climb_infos
   
 end
