@@ -1,11 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../context/user';
+import { useNavigate } from 'react-router-dom'
+
 
 
 const ClimbSubmissionForm = ({ addClimbFlag }) => {
     const [climbName, setClimbName] = useState("")
     const [climbLocation, setClimbLocation] = useState("")
     const { addUserClimb } = useContext(UserContext)
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -13,7 +16,7 @@ const ClimbSubmissionForm = ({ addClimbFlag }) => {
             climb_name: climbName,
             climb_location: climbLocation,
         })
-        addClimbFlag()
+        navigate('/myclimbs')
     }
 
     return (

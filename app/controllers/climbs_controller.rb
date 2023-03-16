@@ -4,7 +4,7 @@ class ClimbsController < ApplicationController
   def index
     # add in if/else here, based off of routing
     user_climbs = current_user.climbs
-    render json: user_climbs, include: :climb_infos
+    render json: user_climbs
     #how to include climb infos? above is not working
   end
 

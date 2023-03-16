@@ -31,6 +31,9 @@ const NavBar = () => {
                 <NavLink to='/submitclimb'>
                     <button> Submit New Climb </button>
                 </NavLink>
+                <NavLink to='/allclimbs'>
+                    <button> All Climbs! </button>
+                </NavLink>
                 <button onClick={logoutUser}>Logout</button>
                 <br />
                 <h3>Hello {user.username} </h3>

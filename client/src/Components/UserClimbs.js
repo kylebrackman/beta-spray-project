@@ -1,16 +1,15 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 // import { Route, useParams } from 'react-router-dom'
 import { UserContext } from '../context/user';
-import ClimbSubmissionForm from './ClimbSubmissionForm';
 
 const UserClimbs = () => {
     const { loggedIn, userClimbs } = useContext(UserContext)
-    const [formFlag, setFormFlag] = useState(false)
-    // const params = useParams();
-
-    const addClimbFlag = () => {
-        setFormFlag(false)
-    }
+    // // removed because i moved submission form into it's own page
+    // // const [formFlag, setFormFlag] = useState(false)
+    // // const params = useParams();
+    // const addClimbFlag = () => {
+    //     setFormFlag(false)
+    // }
 
 
     if (loggedIn) {
