@@ -20,7 +20,7 @@ function UserProvider({ children }) {
             .then(res => res.json())
             .then(data => {
                 setUser(data)
-                if (data.error) {
+                if (data.errors) {
                     setLoggedIn(false)
                 } else {
                     setLoggedIn(true)
