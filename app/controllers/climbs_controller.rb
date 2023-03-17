@@ -1,4 +1,5 @@
 class ClimbsController < ApplicationController
+  
   before_action :authorize
 
   def index
@@ -18,15 +19,8 @@ class ClimbsController < ApplicationController
 
   private
 
-  # def current_user
-  #   User.find_by(id: session[:user_id])
-  # end
-
   def climb_params
     params.permit(:climb_name, :climb_location, :climb_grade)
   end
 
-  # def authorize
-  #   return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
-  # end
 end
