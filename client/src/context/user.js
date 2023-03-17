@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import ClimbSubmissionForm from "../Components/ClimbSubmissionForm";
 const UserContext = React.createContext();
 
 function UserProvider({ children }) {
@@ -10,6 +11,7 @@ function UserProvider({ children }) {
     })
     const [loggedIn, setLoggedIn] = useState(false)
     const [allClimbsList, setAllClimbsList] = useState([])
+    const [climbInfoList, setClimbInfoList] = useState([])
     const navigate = useNavigate()
 
     // should i consider putting all my fetch requests here? including my login / logout?
@@ -23,6 +25,7 @@ function UserProvider({ children }) {
                 } else {
                     setLoggedIn(true)
                     fetchAllClimbs()
+                    fetchAllClimbInfo()
                 }
             })
     }, [])
@@ -32,6 +35,14 @@ function UserProvider({ children }) {
             .then(res => res.json())
             .then(data => {
                 setAllClimbsList(data)
+            })
+    }
+
+    const fetchAllClimbInfo = () => {
+        fetch('/climb_infos')
+            .then(res => res.json())
+            .then(data => {
+                setClimbInfoList(data)
             })
     }
 
@@ -45,6 +56,18 @@ function UserProvider({ children }) {
             .then(data => {
                 setAllClimbsList([...allClimbsList, data]
                 )
+            })
+    }
+
+    const addNewClimbInfo = (newInfo) => {
+        fetch('/climb_infos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                setClimbInfoList([...climbInfoList, data])
             })
     }
 
@@ -76,11 +99,12 @@ function UserProvider({ children }) {
                 signup,
                 loggedIn,
                 addNewClimb,
-                allClimbsList
+                allClimbsList,
+                addNewClimbInfo
             }}>
             {children}
         </UserContext.Provider>
     );
 }
 
-export { UserContext, UserProvider }
+export { UserContext, UserProvider } 

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 
-const ClimbSubmissionForm = ({ addClimbFlag }) => {
+const ClimbSubmissionForm = () => {
     const [climbName, setClimbName] = useState("")
     const [climbLocation, setClimbLocation] = useState("")
     const { addNewClimb } = useContext(UserContext)

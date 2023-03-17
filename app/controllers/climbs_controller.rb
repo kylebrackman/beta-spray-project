@@ -16,20 +16,11 @@ class ClimbsController < ApplicationController
     end
   end
 
-  def show
-    climb = current_user.climbs.find_by(id: params[:id])
-    if climb
-      render json: climb, include: :climb_infos
-    else
-      render json: { errors: "Not found" }, status: :unauthorized
-    end
-  end
-
   private
 
-  def current_user
-    User.find_by(id: session[:user_id])
-  end
+  # def current_user
+  #   User.find_by(id: session[:user_id])
+  # end
 
   def climb_params
     params.permit(:climb_name, :climb_location, :climb_grade)
