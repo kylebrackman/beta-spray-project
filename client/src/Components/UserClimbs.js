@@ -1,13 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 // import { Route, useParams } from 'react-router-dom'
 import { UserContext } from '../context/user';
 
 const UserClimbs = () => {
-    const { loggedIn, allClimbsList } = useContext(UserContext)
-
+    const { loggedIn, allClimbsList, user } = useContext(UserContext)
     const climbOptions = allClimbsList.map(climb => {
         return <option key={climb.id} value={climb.id}>{climb.climb_name}</option>
     })
+
+    // const userClimbs = user.climb_infos.map(climbInfo => {
+    //     climbInfo
+    // })
+
+    const [climbInfo, setClimbInfo] = useState("")
+    const [climbId, setClimbId] = useState("")
+
 
 
     if (loggedIn) {
@@ -22,7 +29,11 @@ const UserClimbs = () => {
                     {climbOptions}
                 </select>
                 <br />
-                <textarea></textarea>
+                <textarea
+                    value={climbInfo}
+                    id="climbName"
+                    onChange={(e) => setClimbInfo(e.target.value)}
+                ></textarea>
             </div>
         )
     } else

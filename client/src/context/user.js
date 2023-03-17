@@ -34,6 +34,7 @@ function UserProvider({ children }) {
                 setAllClimbsList(data)
             })
     }
+
     const addNewClimb = (newClimb) => {
         fetch('/climbs', {
             method: 'POST',
@@ -50,6 +51,7 @@ function UserProvider({ children }) {
     const login = (user) => {
         setUser(user)
         setLoggedIn(true)
+        fetchAllClimbs()
     }
 
     const logout = () => {
