@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ClimbSubmissionForm from "../Components/ClimbSubmissionForm";
 const UserContext = React.createContext();
 
 function UserProvider({ children }) {

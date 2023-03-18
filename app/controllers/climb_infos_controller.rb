@@ -13,6 +13,11 @@ class ClimbInfosController < ApplicationController
         end
     end
 
+    def show
+        climb_info = ClimbInfo.find(params[:id])
+        render json: climb_info
+    end
+
     private 
 
     def climb_info_params
