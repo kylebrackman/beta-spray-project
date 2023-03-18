@@ -36,7 +36,7 @@ function UserProvider({ children }) {
                 setAllClimbsList(data)
             })
     }
-
+    
     const fetchAllClimbInfo = () => {
         fetch('/climb_infos')
             .then(res => res.json())
@@ -99,7 +99,8 @@ function UserProvider({ children }) {
                 loggedIn,
                 addNewClimb,
                 allClimbsList,
-                addNewClimbInfo
+                addNewClimbInfo,
+                climbInfoList
             }}>
             {children}
         </UserContext.Provider>

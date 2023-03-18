@@ -18,6 +18,8 @@ const ClimbNotesSubmissions = () => {
             user_id: user.id,
             climb_id: climbId
         })
+        setClimbInfo("")
+        setClimbId("Select")
     }
 
     return (
