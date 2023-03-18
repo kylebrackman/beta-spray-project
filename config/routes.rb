@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :climb_infos
   resources :climbs
-  # resources :users
+  resources :users
   #for security, should i not have resources on users?
 
   # custom routes

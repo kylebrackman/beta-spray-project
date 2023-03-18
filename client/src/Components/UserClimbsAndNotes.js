@@ -7,9 +7,14 @@ const UserClimbsAndNotes = () => {
 
     const userClimbsWithInfo = climbInfoList.map(info => {
         return (
-            <h3 key={info.id}>
-                {info.info}
-            </h3>
+            <div key={info.id}>
+                <h3>
+                    {info.climb.climb_name}
+                </h3>
+                <p> {info.climb.climb_location} </p>
+                <br />
+                <p> {info.info} </p>
+            </div>
         )
     })
 
