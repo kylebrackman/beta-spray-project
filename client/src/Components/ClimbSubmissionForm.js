@@ -16,7 +16,7 @@ const ClimbSubmissionForm = () => {
             climb_name: climbName,
             climb_location: climbLocation,
         })
-        navigate('/myclimbs')
+        navigate('/allclimbs')
     }
 
     return (

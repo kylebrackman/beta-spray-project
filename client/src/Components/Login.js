@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const Login = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    // const [error, setError] = useState("")
+    const [error, setError] = useState("")
     const navigate = useNavigate()
     const { login } = useContext(UserContext)
     const handleSubmit = (e) => {
@@ -27,13 +27,13 @@ const Login = () => {
                 } else {
                     setUsername("")
                     setPassword("")
-                    // const errorLi = user.error.map(e => <li>{e}</li>)
-                    // setError(errorLi)
+                    const errorLi = <li>{user.error}</li>
+                    setError(errorLi)
                 }
             })
     }
     return (
-        <>
+        <div>
             <form onSubmit={handleSubmit}>
                 <label>Username: </label>
                 <input
@@ -51,10 +51,10 @@ const Login = () => {
                 /> <br />
                 <input type="submit" />
             </form>
-            <ul>
-                {/* <h3>{error}</h3> */}
-            </ul>
-        </>
+            <>
+                {error}
+            </>
+        </div>
     )
 }
 

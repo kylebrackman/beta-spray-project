@@ -12,7 +12,7 @@ function UserProvider({ children }) {
     const [allClimbsList, setAllClimbsList] = useState([])
     const [climbInfoList, setClimbInfoList] = useState([])
     const navigate = useNavigate()
-
+    
     // should i consider putting all my fetch requests here? including my login / logout?
     useEffect(() => {
         fetch('/me')
@@ -36,7 +36,7 @@ function UserProvider({ children }) {
                 setAllClimbsList(data)
             })
     }
-    
+
     const fetchAllClimbInfo = () => {
         fetch('/climb_infos')
             .then(res => res.json())
