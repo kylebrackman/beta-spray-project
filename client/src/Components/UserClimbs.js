@@ -11,7 +11,7 @@ const UserClimbs = () => {
         return (
             <div>
                 <UserClimbsAndNotes />
-                {/* <ClimbNotesSubmissions /> */}
+                <ClimbNotesSubmissions />
             </div>
         )
     } else

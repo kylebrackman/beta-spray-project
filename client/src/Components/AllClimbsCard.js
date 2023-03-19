@@ -7,7 +7,7 @@ const AllClimbsCard = ( { climbName, climbLocation, id } ) => {
     return (
         <div className="row">
             <div className="block">
-                <Link to={`/climbs/${id}`}>Add Beta</Link>
+                <Link to={`/climb/${id}`}>Add Beta</Link>
                     <div>
                         <h2>{climbName}</h2>
                         <p></p>

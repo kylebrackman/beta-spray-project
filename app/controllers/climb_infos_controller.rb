@@ -1,16 +1,16 @@
 class ClimbInfosController < ApplicationController
 
     def index
-        render json: ClimbInfo.all
+        render json: @current_user.climb_infos
     end
 
     def create
-        climb_info = ClimbInfo.create!(climb_info_params)
+        climb_info = @current_user.climb_infos.create!(climb_info_params)
         render json: climb_info, status: :created
     end
 
     def show
-        climb_info = ClimbInfo.find(params[:id])
+        climb_info = @current_user.climb_infos.find(params[:id])
         render json: climb_info
     end
 
