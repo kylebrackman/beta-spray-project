@@ -10,6 +10,7 @@ function UserProvider({ children }) {
     })
     const [loggedIn, setLoggedIn] = useState(false)
     const [allClimbsList, setAllClimbsList] = useState([])
+    const [userClimbs, setUserClimbs] = useState([])
     const [climbInfoList, setClimbInfoList] = useState([])
     const navigate = useNavigate()
 
@@ -24,25 +25,25 @@ function UserProvider({ children }) {
                 } else {
                     setLoggedIn(true)
                     fetchAllClimbs()
-                    fetchAllClimbInfo()
+                    fetchUserClimbs()
                 }
             })
     }, [])
 
     const fetchAllClimbs = () => {
-        fetch('/climbs')
+        fetch('/climbs?all_climbs=true')
             .then(res => res.json())
             .then(data => {
                 setAllClimbsList(data)
             })
     }
 
-    const fetchAllClimbInfo = () => {
-        fetch('/climb_infos')
-            .then(res => res.json())
-            .then(data => {
-                setClimbInfoList(data)
-            })
+    const fetchUserClimbs = () => {
+        fetch (`/users/${user.id}/climbs`)
+        .then(res => res.json())
+        .then(data => {
+            setUserClimbs(data)
+        })
     }
 
     const addNewClimb = (newClimb) => {
@@ -115,7 +116,8 @@ function UserProvider({ children }) {
                 allClimbsList,
                 addNewClimbInfo,
                 climbInfoList,
-                deleteClimbInfo
+                deleteClimbInfo,
+                userClimbs
             }}>
             {children}
         </UserContext.Provider>

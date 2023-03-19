@@ -1,11 +1,13 @@
 class ClimbsController < ApplicationController
-  
   before_action :authorize
 
   def index
-    # add in if/else here, based off of routing?
-    render json: @current_user.climbs
-    # render json: Climb.all
+    if params[:all_climbs]
+      climbs = Climb.all
+    else
+      climbs = @current_user.climbs.uniq { |climb| climb.id }
+    end
+    render json: climbs
   end
 
   def create
@@ -18,5 +20,4 @@ class ClimbsController < ApplicationController
   def climb_params
     params.permit(:climb_name, :climb_location, :climb_grade)
   end
-
 end
