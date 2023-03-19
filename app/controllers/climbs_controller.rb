@@ -5,7 +5,7 @@ class ClimbsController < ApplicationController
   def index
     # add in if/else here, based off of routing?
     # render json: @current_user.climbs
-    render json: Climb.all
+    render json: @current_user.climbs
   end
 
   def create

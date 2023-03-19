@@ -1,11 +1,13 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
-const AllClimbsCard = ( { climbName, climbLocation }) => {
+
+const AllClimbsCard = ( { climbName, climbLocation, id } ) => {
 
     return (
         <div className="row">
             <div className="block">
-                <img alt='climb'/>
+                <Link to={`/climbs/${id}`}>Add Beta</Link>
                     <div>
                         <h2>{climbName}</h2>
                         <p></p>

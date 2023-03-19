@@ -3,7 +3,8 @@ import { UserContext } from '../context/user';
 
 
 const UserClimbsAndNotes = () => {
-    const { climbInfoList } = useContext(UserContext)
+    const { climbInfoList, deleteClimbInfo } = useContext(UserContext)
+
 
     const userClimbsWithInfo = climbInfoList.map(info => {
         return (
@@ -14,6 +15,7 @@ const UserClimbsAndNotes = () => {
                 <p> {info.climb.climb_location} </p>
                 <br />
                 <p> {info.info} </p>
+                <button onClick={() => deleteClimbInfo(info.id)}>Delete</button>
             </div>
         )
     })

@@ -11,6 +11,7 @@ const AllClimbs = () => {
         allClimbsList.map(climb => {
             return <AllClimbsCard
                 key={climb.id}
+                id={climb.id}
                 climbName={climb.climb_name}
                 climbLocation={climb.climb_location}
             />
