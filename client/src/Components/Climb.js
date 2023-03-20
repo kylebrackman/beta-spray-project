@@ -7,11 +7,10 @@ import ClimbNotesSubmissions from './ClimbNotesSubmissions';
 const Climb = () => {
 
     const { id } = useParams()
-    const { userClimbs } = useContext(UserContext)
+    const { allClimbsList } = useContext(UserContext)
 
 
-    const climb = userClimbs.find(c => c.id === parseInt(id))
-    console.log(climb)
+    const climb = allClimbsList.find(c => c.id === parseInt(id))
 
     if (!climb) {
         return (

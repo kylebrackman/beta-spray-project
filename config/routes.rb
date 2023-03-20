@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :climb_infos
-  resources :climbs, only: [:index, :create]
+  resources :climbs, only: [:index, :create, :show]
   resources :users, only: [:index, :create, :show] do 
     resources :climbs, only: [:index]
   end

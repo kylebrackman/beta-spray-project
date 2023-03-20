@@ -1,16 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../context/user';
 import { useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const ClimbNotesSubmissions = () => {
-    const { allClimbsList, user, addNewClimbInfo } = useContext(UserContext)
-    // const climbOptions = allClimbsList.map(climb => {
-    //     return <option key={climb.id} value={climb.id}>{climb.climb_name}</option>
-    // })
-
     const [climbInfo, setClimbInfo] = useState("")
-    // const [climbId, setClimbId] = useState(null)
+    const { user, addNewClimbInfo } = useContext(UserContext)
     const { id } = useParams()
+    const navigate = useNavigate()
 
 
     const handleSubmit = (e) => {
@@ -21,7 +18,7 @@ const ClimbNotesSubmissions = () => {
             climb_id: id
         })
         setClimbInfo("")
-        // setClimbId("Select")
+        navigate('/myclimbs')
     }
 
     return (
@@ -30,10 +27,6 @@ const ClimbNotesSubmissions = () => {
                 Add some beta!
             </h2>
             <form onSubmit={handleSubmit}>
-                {/* <select onChange={(e) => setClimbId(e.target.value)}>
-                    <option>Select</option>
-                    {climbOptions}
-                </select> */}
                 <br />
                 <textarea
                     value={climbInfo}

@@ -15,6 +15,11 @@ class ClimbsController < ApplicationController
     render json: climb, status: :created
   end
 
+  def show
+    climb = Climb.find(params[:id])
+    render json: climb
+  end
+
   private
 
   def climb_params

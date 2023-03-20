@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
-// import { Route, useParams } from 'react-router-dom'
 import { UserContext } from '../context/user';
-import ClimbNotesSubmissions from './ClimbNotesSubmissions';
 import UserClimbsAndNotes from './UserClimbsAndNotes';
 
 const UserClimbs = () => {
@@ -11,7 +9,6 @@ const UserClimbs = () => {
         return (
             <div>
                 <UserClimbsAndNotes />
-                <ClimbNotesSubmissions />
             </div>
         )
     } else
