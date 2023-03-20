@@ -1,36 +1,39 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../context/user';
+import { useParams } from 'react-router-dom'
 
 const ClimbNotesSubmissions = () => {
     const { allClimbsList, user, addNewClimbInfo } = useContext(UserContext)
-    const climbOptions = allClimbsList.map(climb => {
-        return <option key={climb.id} value={climb.id}>{climb.climb_name}</option>
-    })
+    // const climbOptions = allClimbsList.map(climb => {
+    //     return <option key={climb.id} value={climb.id}>{climb.climb_name}</option>
+    // })
 
     const [climbInfo, setClimbInfo] = useState("")
-    const [climbId, setClimbId] = useState(null)
+    // const [climbId, setClimbId] = useState(null)
+    const { id } = useParams()
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
         addNewClimbInfo({
             info: climbInfo,
             user_id: user.id,
-            climb_id: climbId
+            climb_id: id
         })
         setClimbInfo("")
-        setClimbId("Select")
+        // setClimbId("Select")
     }
 
     return (
         <div>
             <h2>
-                Select a climb to take notes on!
+                Add some beta!
             </h2>
             <form onSubmit={handleSubmit}>
-                <select onChange={(e) => setClimbId(e.target.value)}>
+                {/* <select onChange={(e) => setClimbId(e.target.value)}>
                     <option>Select</option>
                     {climbOptions}
-                </select>
+                </select> */}
                 <br />
                 <textarea
                     value={climbInfo}

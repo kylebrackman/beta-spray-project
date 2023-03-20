@@ -29,9 +29,6 @@ const NavBar = () => {
                 <NavLink to='/myclimbs'>
                     <button>My Climb Notes</button>
                 </NavLink>
-                <NavLink to='/submitclimb'>
-                    <button> Submit New Climb </button>
-                </NavLink>
                 <NavLink to='/allclimbs'>
                     <button> All Climbs! </button>
                 </NavLink>

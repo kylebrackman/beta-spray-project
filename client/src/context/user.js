@@ -40,6 +40,8 @@ function UserProvider({ children }) {
 
     const fetchUserClimbs = () => {
         fetch (`/users/${user.id}/climbs`)
+        // is it possible to get the same result by rendering @current_user climbs from the controller
+        // instead of a nested route?
         .then(res => res.json())
         .then(data => {
             setUserClimbs(data)
@@ -77,7 +79,6 @@ function UserProvider({ children }) {
     }
 
     const deleteClimbInfo = (id) => {
-        console.log(id)
         fetch(`/climb_infos/${id}`, {
             method: "DELETE",
         })
