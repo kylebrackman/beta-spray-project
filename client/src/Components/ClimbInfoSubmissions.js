@@ -3,7 +3,7 @@ import { UserContext } from '../context/user';
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
-const ClimbNotesSubmissions = () => {
+const ClimbInfoSubmissions = () => {
     const [climbInfo, setClimbInfo] = useState("")
     const { user, addNewClimbInfo } = useContext(UserContext)
     const { id } = useParams()
@@ -41,4 +41,4 @@ const ClimbNotesSubmissions = () => {
 
 }
 
-export default ClimbNotesSubmissions
+export default ClimbInfoSubmissions

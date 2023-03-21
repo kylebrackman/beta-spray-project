@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { UserContext } from '../context/user';
-import ClimbNotesSubmissions from './ClimbNotesSubmissions';
+import ClimbInfoSubmissions from './ClimbInfoSubmissions';
 
 
 const Climb = () => {
@@ -23,7 +23,7 @@ const Climb = () => {
             <div>
                 <h2>{climb.climb_name}</h2>
                 <h3>{climb.climb_location}</h3>
-                <ClimbNotesSubmissions />
+                <ClimbInfoSubmissions />
             </div>
         )
     }

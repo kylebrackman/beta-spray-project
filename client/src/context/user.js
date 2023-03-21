@@ -61,6 +61,27 @@ function UserProvider({ children }) {
             })
     }
 
+    const editInfo = (climb_info) => {
+        fetch(`/climb_infos/${climb_info.id}`, {
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(climb_info)
+        })
+        .then(res => res.json())
+        .then(data => handleEditInfo(data))
+    }
+
+    const handleEditInfo = (editedInfo) => {
+        const updatedInfoList = climbInfoList.map(info => {
+            if (info.id === editedInfo.id) {
+                return updatedInfoList
+            }
+            return climbInfoList
+        })
+        setClimbInfoList(editInfo)
+    }
+
+
     const addNewClimbInfo = (newInfo) => {
         fetch('/climb_infos', {
             method: 'POST',
@@ -118,7 +139,8 @@ function UserProvider({ children }) {
                 addNewClimbInfo,
                 climbInfoList,
                 deleteClimbInfo,
-                userClimbs
+                userClimbs,
+                editInfo
             }}>
             {children}
         </UserContext.Provider>

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../context/user';
-import UserClimbsAndNotes from './UserClimbsAndNotes';
+import UserClimbsAndInfo from './UserClimbsAndInfo';
 
 const UserClimbs = () => {
     const { loggedIn } = useContext(UserContext)
@@ -8,15 +8,13 @@ const UserClimbs = () => {
     if (loggedIn) {
         return (
             <div>
-                <UserClimbsAndNotes />
+                <UserClimbsAndInfo />
             </div>
         )
     } else
         return (
             <h3>Not Authorized - Please Signup or Login </h3>
         )
-
-
 }
 
 export default UserClimbs

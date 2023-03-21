@@ -10,7 +10,7 @@ class ClimbInfosController < ApplicationController
     end
 
     def show
-        climb_info = @current_user.climb_infos.find(params[:id])
+        climb_info = find_climb_info
         render json: climb_info
     end
 
@@ -21,7 +21,13 @@ class ClimbInfosController < ApplicationController
     end
 
     def update
-        
+        climb_info = find_climb_info
+        if climb_info
+            climb_info.update(climb_info_params)
+            render json: climb_info
+        else
+            render json: { error: "Climb not found"}, status: :not_found
+        end
     end
 
     private 
@@ -31,6 +37,6 @@ class ClimbInfosController < ApplicationController
     end 
 
     def find_climb_info
-        ClimbInfo.find(params[:id])
+        @current_user.climb_infos.find(params[:id])
     end
 end
