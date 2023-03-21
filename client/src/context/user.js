@@ -28,7 +28,7 @@ function UserProvider({ children }) {
                     fetchUserClimbs()
                 }
             })
-    }, [])
+    }, [climbInfoList])
 
     const fetchAllClimbs = () => {
         fetch('/climbs?all_climbs=true')
@@ -47,7 +47,6 @@ function UserProvider({ children }) {
             setUserClimbs(data)
         })
     }
-
     const addNewClimb = (newClimb) => {
         fetch('/climbs', {
             method: 'POST',
@@ -69,6 +68,7 @@ function UserProvider({ children }) {
         })
         .then(res => res.json())
         .then(data => handleEditInfo(data))
+        console.log("HERE IS THE CLIMB INFO", climb_info)
     }
 
     const handleEditInfo = (editedInfo) => {
@@ -78,7 +78,7 @@ function UserProvider({ children }) {
             }
             return climbInfoList
         })
-        setClimbInfoList(editInfo)
+        setClimbInfoList(updatedInfoList)
     }
 
 
