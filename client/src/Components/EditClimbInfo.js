@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from '../context/user'
 
-const EditClimbInfo = ({ infoId, previousInfo }) => {
-    const { userClimbs, deleteClimbInfo } = useContext(UserContext);
+const EditClimbInfo = ({ infoId, previousInfo, infoUserId }) => {
+    const { deleteClimbInfo, user, editInfo } = useContext(UserContext);
 
 
     const [climbInfo, setClimbInfo] = useState("")
-    const { user, editInfo } = useContext(UserContext)
     const [isEditing, setIsEditing] = useState(false)
 
     const handleSubmit = (e) => {
@@ -42,12 +41,16 @@ const EditClimbInfo = ({ infoId, previousInfo }) => {
             </div>
         )
     } else {
-        return (
-            <div>
-                <button onClick={() => deleteClimbInfo(infoId)}>Delete</button>
-                <button onClick={() => handleEditClick()}>Edit</button>
-            </div>
-        )
+        if (user.id === infoUserId) {
+            return (
+                <div>
+                    <button onClick={() => deleteClimbInfo(infoId)}>Delete</button>
+                    <button onClick={() => handleEditClick()}>Edit</button>
+                </div>
+            )
+        } else {
+            return null
+        }
     }
 
 

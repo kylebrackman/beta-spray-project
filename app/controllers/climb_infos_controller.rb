@@ -1,4 +1,6 @@
 class ClimbInfosController < ApplicationController
+    
+    before_action :find_climb_info, except: [:create, :index]
 
     def index
         render json: @current_user.climb_infos
@@ -10,21 +12,18 @@ class ClimbInfosController < ApplicationController
     end
 
     def show
-        climb_info = find_climb_info
-        render json: climb_info
+        render json: @climb_info
     end
 
     def destroy
-        climb_info = find_climb_info
-        climb_info.delete
+        @climb_info.delete
         head :no_content
     end
 
     def update
-        climb_info = find_climb_info
-        if climb_info
-            climb_info.update(climb_info_params)
-            render json: climb_info
+        if @climb_info
+            @climb_info.update(climb_info_params)
+            render json: @climb_info
         else
             render json: { error: "Climb not found"}, status: :not_found
         end
@@ -37,6 +36,6 @@ class ClimbInfosController < ApplicationController
     end 
 
     def find_climb_info
-        @current_user.climb_infos.find(params[:id])
+        @climb_info = @current_user.climb_infos.find_by(id: params[:id])
     end
 end

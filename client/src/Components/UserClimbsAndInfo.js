@@ -6,7 +6,7 @@ import EditClimbInfo from './EditClimbInfo';
 
 
 const UserClimbsAndInfo = () => {
-    const { userClimbs, deleteClimbInfo } = useContext(UserContext)
+    const { userClimbs } = useContext(UserContext)
 
     const userClimbsWithInfo = userClimbs.map(climb => {
         return (
@@ -15,8 +15,8 @@ const UserClimbsAndInfo = () => {
                 <h3>{climb.climb_location}</h3>
                 {climb.climb_infos.map((info) => (
                     <div key={info.id}>
-                        <p>{info.info}</p>
-                        <EditClimbInfo previousInfo={info.info} infoId={info.id}/>
+                        <p>Beta: {info.info}</p>
+                        <EditClimbInfo previousInfo={info.info} infoId={info.id} infoUserId={info.user_id}/>
                     </div>
                 ))}
             </div>
