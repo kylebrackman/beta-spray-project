@@ -21,20 +21,20 @@ const NavBar = () => {
     // had to add the && user for this to work...?
     if (loggedIn && user) {
         return (
-            <div>
-                <h1>Beta Spray</h1>
+            <div style={{ marginBottom: 10 }}>
+                <h1 className="header">Beta Spray</h1>
+                <h3>Hello {user.username} </h3>
                 <NavLink to='/home'>
-                    <button> Home Page </button>
+                    <button className="navbar-button"> Home Page </button>
                 </NavLink>
                 <NavLink to='/myclimbs'>
-                    <button>My Climb Notes</button>
+                    <button className="navbar-button">My Climb Notes</button>
                 </NavLink>
                 <NavLink to='/allclimbs'>
-                    <button> All Climbs! </button>
+                    <button className="navbar-button"> All Climbs! </button>
                 </NavLink>
-                <button onClick={logoutUser}>Logout</button>
+                <button onClick={logoutUser} className="navbar-button">Logout</button>
                 <br />
-                <h3>Hello {user.username} </h3>
             </div>
         )
     } else {

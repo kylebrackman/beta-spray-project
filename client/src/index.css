@@ -3,12 +3,18 @@ body {
   font-family: monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: hwb(205 46% 34%);
+  background-color: #e8f9fd;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.header {
+  font-family: monospace;
+  font-size: 50px;
+  text-decoration: underline;
 }
 
 .block {
@@ -17,15 +23,11 @@ code {
   padding: 1rem;
   margin: 0 0 1rem 0;
 }
-.block img {
-   width: 75px;
-  height: 75px;
-  float: left;
-  margin: 0 1rem 0 0;
-}
+
 .block h2 {
   margin: 0 0 0.5rem 0;
 }
+
 /*NEW STYLES*/
 .block {
   display: grid;
@@ -38,4 +40,87 @@ code {
 textarea {
   width: 300px;
   height: 150px;
+}
+
+.climb-link {
+  color: #fd1e01;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 25px;
+  text-decoration: underline;
+}
+
+.card {
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #ffff;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h3 {
+  margin: 0;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar-button {
+  background-color: #fd1e01;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+button:hover {
+  background-color: #fd1e01cc;
+}
+
+.card-button {
+  background-color: #59ce8f;
+  border: none;
+  color: white;
+  display: inline-block;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  border-radius: 20px;
+  height: 20px;
+  width: 20px;
+}
+
+button:hover {
+  background-color: #fd1e01cc;
+}
+
+.add-beta-link {
+  color: #fd1e01;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  text-decoration: underline;
 }

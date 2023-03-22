@@ -43,9 +43,9 @@ const EditClimbInfo = ({ infoId, previousInfo, infoUserId }) => {
     } else {
         if (user.id === infoUserId) {
             return (
-                <div>
-                    <button onClick={() => deleteClimbInfo(infoId)}>Delete</button>
-                    <button onClick={() => handleEditClick()}>Edit</button>
+                <div style={{ display: "flex" }}>
+                    <button className='card-button' onClick={() => deleteClimbInfo(infoId)}>X</button>
+                    <button className='card-button' onClick={() => handleEditClick()}>Edit</button>
                 </div>
             )
         } else {
