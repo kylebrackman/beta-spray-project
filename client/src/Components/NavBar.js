@@ -31,7 +31,7 @@ const NavBar = () => {
                     <button className="navbar-button">My Beta</button>
                 </NavLink>
                 <NavLink to='/allclimbs'>
-                    <button className="navbar-button"> All Climbs! </button>
+                    <button className="navbar-button"> All Climbs </button>
                 </NavLink>
                 <button onClick={logoutUser} className="navbar-button">Logout</button>
                 <br />

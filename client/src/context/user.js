@@ -119,7 +119,7 @@ function UserProvider({ children }) {
             climb_infos: []
         })
         setLoggedIn(false)
-        navigate('/')
+        navigate('/login')
         setUserClimbs([])
     }
 

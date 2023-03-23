@@ -55,8 +55,7 @@ textarea {
   padding: 10px;
   margin-bottom: 10px;
   background-color: #ffff;
-  margin-left: 500px;
-  margin-right: 500px;
+  width: 500px;
 }
 
 .card-header {
@@ -186,4 +185,11 @@ button:hover {
   flex-wrap: wrap;
   justify-content: center;
   grid-gap: 10px;
+}
+
+.center-climbs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
