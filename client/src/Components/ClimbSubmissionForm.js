@@ -20,7 +20,7 @@ const ClimbSubmissionForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='add-beta-submission-form' onSubmit={handleSubmit}>
             <label> Climb Name: </label>
             <input
                 type="text"
@@ -35,7 +35,7 @@ const ClimbSubmissionForm = () => {
                 value={climbLocation}
                 onChange={(e) => setClimbLocation(e.target.value)}
             /> <br />
-            <input type="submit" />
+            <input className='submit-info-button' type="submit" />
         </form>
     )
 }

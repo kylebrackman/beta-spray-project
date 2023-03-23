@@ -111,6 +111,7 @@ function UserProvider({ children }) {
         setUser(user)
         setLoggedIn(true)
         fetchAllClimbs()
+        fetchUserClimbs()
     }
 
     const logout = () => {
@@ -119,6 +120,7 @@ function UserProvider({ children }) {
         })
         setLoggedIn(false)
         navigate('/')
+        setUserClimbs([])
     }
 
     const signup = (user) => {

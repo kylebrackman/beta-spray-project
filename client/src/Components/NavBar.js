@@ -28,7 +28,7 @@ const NavBar = () => {
                     <button className="navbar-button"> Home Page </button>
                 </NavLink>
                 <NavLink to='/myclimbs'>
-                    <button className="navbar-button">My Climb Notes</button>
+                    <button className="navbar-button">My Beta</button>
                 </NavLink>
                 <NavLink to='/allclimbs'>
                     <button className="navbar-button"> All Climbs! </button>
@@ -41,10 +41,10 @@ const NavBar = () => {
         return (
             <div>
                 <NavLink to='/login'>
-                    <button>Login</button>
+                    <button className="login-button">Login</button>
                 </NavLink >
                 <NavLink to='/signup'>
-                    <button>Signup</button>
+                    <button className="login-button">Signup</button>
                 </NavLink>
                 <hr />
             </div>

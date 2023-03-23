@@ -22,11 +22,11 @@ const ClimbInfoSubmissions = () => {
     }
 
     return (
-        <div>
+        <div >
             <h2>
                 Add some beta!
             </h2>
-            <form onSubmit={handleSubmit}>
+            <form className='add-beta-submission-form' onSubmit={handleSubmit}>
                 <br />
                 <textarea
                     value={climbInfo}
@@ -34,7 +34,7 @@ const ClimbInfoSubmissions = () => {
                     onChange={(e) => setClimbInfo(e.target.value)}
                 >
                 </textarea> <br />
-                <input type="submit" />
+                <input className='submit-info-button' type="submit" />
             </form>
         </div>
     )
