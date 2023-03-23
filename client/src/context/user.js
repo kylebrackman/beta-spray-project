@@ -74,9 +74,9 @@ function UserProvider({ children }) {
     const handleEditInfo = (editedInfo) => {
         const updatedInfoList = climbInfoList.map(info => {
             if (info.id === editedInfo.id) {
-                return updatedInfoList
+                return editedInfo
             }
-            return climbInfoList
+            return info
         })
         setClimbInfoList(updatedInfoList)
     }
