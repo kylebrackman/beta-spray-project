@@ -5,7 +5,7 @@ Beta Spray is an application solely based around unlocking the moves to your har
 It can be difficult to push your limits on climbing grades if you are in a new area, the movement is foreign to you, or if you are unfamiliar with what type of gear you'll need. With the help of Beta Spray and the climbing community, you can get some help with your toughest projects!
 
 ## How Beta Spray is Written
-Gear heads was written using a React front end and a Ruby on Rails back end.
+Beta spray is written using a React front end and a Ruby on Rails back end.
 
 ## Future Additions
 Future updates will include possible user names with each piece of beta. I would also love to include a way for users to be able to take photos of specific climbs and upload them directly to Beta Spray. This would be huge in terms of context for each climb. 
