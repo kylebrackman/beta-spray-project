@@ -14,6 +14,8 @@ function Home() {
                         <p className='home-p'>"Beta" is climbing lingo that refers to specific movement and hold styles that can help other climbers complete technical faces!</p>
                         <br />
                         <p className='home-p'>Beta Spray is an application solely based around unlocking the moves to your hardest climbing projects!</p>
+                        <br />
+                        <p className='home-p'>Currently, Beta Spray is anonymous, and you can only delete and edit comments that you post yourself!</p>
                     </div>
                     <div className='home-card'>
                         <h2 className='home-h2'>How to Use</h2>
