@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 const ClimbSubmissionForm = () => {
     const [climbName, setClimbName] = useState("")
     const [climbLocation, setClimbLocation] = useState("")
-    const { addNewClimb } = useContext(UserContext)
+    const { addNewClimb, errors } = useContext(UserContext)
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
@@ -38,6 +38,9 @@ const ClimbSubmissionForm = () => {
                 onChange={(e) => setClimbLocation(e.target.value)}
             /> <br />
             <input className='submit-info-button' type="submit" />
+            <>
+                {errors}
+            </>
         </form>
     )
 }

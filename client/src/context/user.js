@@ -11,6 +11,7 @@ function UserProvider({ children }) {
     const [loggedIn, setLoggedIn] = useState(false)
     const [allClimbsList, setAllClimbsList] = useState([])
     const [userClimbs, setUserClimbs] = useState([])
+    const [errors, setErrors] = useState([])
     const [climbInfoList, setClimbInfoList] = useState([])
     const navigate = useNavigate()
 
@@ -39,13 +40,13 @@ function UserProvider({ children }) {
     }
 
     const fetchUserClimbs = () => {
-        fetch (`/users/${user.id}/climbs`)
-        // is it possible to get the same result by rendering @current_user climbs from the controller
-        // instead of a nested route?
-        .then(res => res.json())
-        .then(data => {
-            setUserClimbs(data)
-        })
+        fetch(`/users/${user.id}/climbs`)
+            // is it possible to get the same result by rendering @current_user climbs from the controller
+            // instead of a nested route?
+            .then(res => res.json())
+            .then(data => {
+                setUserClimbs(data)
+            })
     }
     const addNewClimb = (newClimb) => {
         fetch('/climbs', {
@@ -55,19 +56,24 @@ function UserProvider({ children }) {
         })
             .then(res => res.json())
             .then(data => {
-                setAllClimbsList([...allClimbsList, data]
-                )
+                if (!data.errors) {
+                    setAllClimbsList([...allClimbsList, data]
+                    )
+                } else {
+                    const errorLis = data.errors.map ( e => <li>{e}</li>)
+                    setErrors(errorLis)
+                }
             })
     }
 
     const editInfo = (climb_info) => {
         fetch(`/climb_infos/${climb_info.id}`, {
             method: 'PATCH',
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(climb_info)
         })
-        .then(res => res.json())
-        .then(data => handleEditInfo(data))
+            .then(res => res.json())
+            .then(data => handleEditInfo(data))
         console.log("HERE IS THE CLIMB INFO", climb_info)
     }
 
@@ -103,8 +109,8 @@ function UserProvider({ children }) {
         fetch(`/climb_infos/${id}`, {
             method: "DELETE",
         })
-        .then(() => onDeleteClimbInfo(id))
-        .catch(error => console.log(error))
+            .then(() => onDeleteClimbInfo(id))
+            .catch(error => console.log(error))
     }
 
     const login = (user) => {
@@ -142,7 +148,8 @@ function UserProvider({ children }) {
                 climbInfoList,
                 deleteClimbInfo,
                 userClimbs,
-                editInfo
+                editInfo,
+                errors
             }}>
             {children}
         </UserContext.Provider>

@@ -20,13 +20,4 @@ class SessionsController < ApplicationController
     head :no_content
   end
 
-  private
-  
-  # def username_params
-  #   params.permit(:username)
-  # end
-
-  # def password_params
-  #   params.permit(:password)
-  # end
 end
